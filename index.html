@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<!-- <html class="fontawesome-i2svg-active fontawesome-i2svg-complete"> -->
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  
+
+  <!-- HTML Meta Tags -->
+  <title>Moebius Project Page</title>
+  <meta name="description" content="Moebius: 0.2B Lightweight Image Inpainting Framework with 10B-Level Performance">
+  <title>Moebius: 0.2B Lightweight Image Inpainting Framework with 10B-Level Performance</title>
+
+  <link href="./assets/css_nerfies" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css_nerfies/bulma.min.css">
+  <link rel="stylesheet" href="./assets/css_nerfies/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./assets/css_nerfies/bulma-slider.min.css">
+  <link rel="stylesheet" href="./assets/css_nerfies/index_nerfies.css">
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+</head>
+
+<body data-new-gr-c-s-check-loaded="14.1098.0" data-gr-ext-installed="">
+  <section class="hero" style="background-color:#ffffff">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <img src="./image_assets/logo_dynamic_woWaterMark.gif" width="100%" style="margin-bottom: 40px;">
+            <h1 class="title is-2 publication-title">
+              Moebius: 0.2B Lightweight Image Inpainting Framework with 10B-Level Performance
+            </h1>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://github.com/AnduinD" style="color: inherit; text-decoration: none;">Kangsheng Duan</a><sup>1,</sup>*&nbsp</span>
+              <span class="author-block">
+                <a href="https://ziyangxu.top/" style="color: inherit; text-decoration: none;">Ziyang Xu</a><sup>1,</sup>*<sup>,†</sup>&nbsp</span>
+              <span class="author-block"><a href="http://eic.hust.edu.cn/professor/liuwenyu" style="color: inherit; text-decoration: none;">Wenyu Liu</a><sup>1</sup>&nbsp</span>
+              <span class="author-block">Xiaohu Ruan<sup>2</sup>&nbsp</span>
+              <span class="author-block"><a href="https://scholar.google.com/citations?hl=zh-CN&user=SI_oBwsAAAAJ" style="color: inherit; text-decoration: none;">Xiaoxin Chen</a><sup>2</sup>&nbsp</span>
+              <span class="author-block"><a href="https://xwcv.github.io/" style="color: inherit; text-decoration: none;">Xinggang Wang</a><sup>1,📧</sup>&nbsp</span>
+            </div>
+            <!-- <br> -->
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">(*) Equal Contribution, (<sup>†</sup>) Project Leader, (<sup>📧</sup>) Corresponding Author.&nbsp</span>
+            </div>
+            <!-- <br> -->
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Huazhong University of Science and Technology &nbsp</span>
+              <span class="author-block"><sup>2</sup>VIVO AI Lab &nbsp</span>
+            </div>
+            <!-- <br> -->
+            <!-- <div class="is-size-5 publication-venue">In submission</div> -->
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <a
+                  href=""
+                  class="external-link button is-rounded is-black"
+                  style="text-decoration: none;"
+                >
+                  arXiv
+                </a>
+                <a
+                  href="https://github.com/hustvl/Moebius"
+                  class="external-link button is-rounded is-black"
+                  style="text-decoration: none;"
+                >
+                  Code
+                </a>
+                <a
+                  href="#BibTeX"
+                  class="external-link button is-rounded is-black"
+                  style="text-decoration: none;"
+                >
+                  BibTex
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero teaser"> <!--/ Abstract. -->
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              While 10B-level industrial foundation models have pushed the boundaries of image inpainting, their prohibitive computational costs severely hinder practical deployment. Constructing a highly optimized task-specific specialist offers a promising solution; however, extreme structural compression inevitably triggers a severe representation bottleneck. To conquer this, we propose Moebius, a highly efficient lightweight inpainting framework. We systematically reconstruct the diffusion backbone by introducing the Local-λ Mix Interaction (LλMI) block. Comprising Local-λ and Interactive-λ modules, it elegantly summarizes spatial contexts and global semantic priors into fixed-size linear matrices, preserving complex latent interactions while drastically shedding parameters. Furthermore, to unlock the full representational capacity of this highly compact architecture, we synergistically pair it with an adaptive multi-granularity distillation strategy. Operating strictly within the latent space to avoid expensive pixel-space decoding, this strategy dynamically balances multiple gradient-based losses to achieve high-fidelity alignment. Extensive experiments across natural and portrait benchmarks demonstrate that this optimal synergy enables Moebius to rival or even surpass the generation quality of the 10B-level industrial generalist FLUX.1-Fill-Dev. Remarkably, Moebius achieves this using less than 2\% of the parameters (0.22B vs. 11.9B) while delivering a >15× acceleration in total inference time, setting a new efficiency standard for high-fidelity inpainting.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!--/ Abstract. -->
+      <!-- <hr> -->
+    </div>
+  </section>
+
+
+  <section class="hero is-small"> <!--/ Method. -->
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Method</h2>
+          <div class="content has-text-justified">
+            <img src="image_assets/method/pipeline.png" >
+            <p>
+            <b>Overall pipeline of Moebius.</b> We adopt the Latent Diffusion Model (LDM) framework equipped with Latent Categories Guidance (LCG). To achieve extreme architectural efficiency, the denoising U-Net is systematically restructured using our proposed LλM I blocks (detailed in Sec. 3.2). Furthermore, an adaptive multi-granularity distillation strategy (Sec. 3.3) is applied during training to align our lightweight specialist with the high-capacity teacher, successfully mitigating the capacity drop caused by extreme structural compression.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!--/ Method. -->
+      <!-- <hr> -->
+    </div>
+  </div>
+  </section>
+
+
+  <section class="hero is-small"> <!--/ Method. -->
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Highlights</h2>
+          <div class="content has-text-justified">
+            <ul>
+              <li><b>📉 Extreme Parametric Efficiency (&lt; 2%)</b>: Moebius operates with a mere <b>0.22B (226M) parameters</b>, which represents <b>less than 2%</b> of the size of the colossal industrial giant <i>FLUX.1-Fill-Dev (11.9B)</i>. It shatters the heavy-compute narrative, making high-quality inpainting accessible on consumer-grade and edge devices.</li>
+              <li><b>⚡ 15× Inference Speedup (26ms/step)</b>: Achieves a blistering inference latency of only <b>26.01 ms per step</b> on a single GPU. Combined with optimized sampling steps, Moebius delivers an overall <b>&gt;15× total runtime acceleration</b> compared to 10B-level models.</li>
+            </ul>
+
+            <div class="has-text-centered" style="margin: 1rem 0;">
+              <img src="./image_assets/tab1.png" width="80%" style="margin-bottom: 10px;">
+            </div>
+
+            <ul>
+              <li><b>🏆 10B-Level Inpainting Quality (on-par-with/surpass FLUX.1-Fill-Dev across 6 benchmarks)</b>: Size contraction does not mean representation degradation. Through the synergistic optimization of architecture and distillation, Moebius performs on par with, and in certain scenarios (such as complex textures and facial plausibility), surpasses 10B-level state-of-the-art (SOTA) generalist models (<i>FLUX.1-Fill-Dev</i>, <i>SD3.5 Large-Inpainting</i>) across 6 comprehensive benchmarks spanning <b>both natural</b> scenes (<i>Places2</i>) and <b>portrait</b> scenes (<i>CelebA-HQ</i>, <i>FFHQ</i>).</li>
+              <li><b>💡 Synergistic Core Innovations</b>:
+                <ul>
+                  <li><b>Architecture Design (LλMI Block)</b>: Reformulates both self- and cross-attention by condensing spatial context and global semantic priors into fixed-size linear matrices, bypassing quadratic computational overhead.</li>
+                  <li><b>Adaptive Multi-Granularity Distillation Strategy</b>: Transfers the representational capacity from our <i>PixelHacker</i> (teacher) strictly within the latent space (avoiding expensive pixel-space decoding). It bridges the giant capacity gap by aligning multi-granularity supervision—ranging from microscopic intermediate features to macroscopic diffusion trajectories—while dynamically balancing training via a gradient norm adaptive loss weighting mechanism.</li>
+                  <li><b>Optimal Synergistic Balancing</b>: Systematically explores the mutual constraint and upper bound between compact structure and distillation. By mapping this architecture-distillation synergy frontier, we ensure our 0.22B <i>Moebius</i> (student) absorbs the maximum semantic reasoning of <i>PixelHacker</i> (teacher) without triggering representation saturation.</li>
+                </ul>
+              </li>
+            </ul>
+
+            <div class="has-text-centered" style="margin: 1rem 0;">
+              <img src="./image_assets/tab2.png" width="80%" style="margin-bottom: 10px;">
+            </div>
+
+            <ul>
+              <li><b>🚀 Task-Specific Specialist over Bloated Generalists</b>: Rather than blindly scaling up, Moebius answers a fundamental question: <i><u>Can a model be smarter, lighter, and faster when the task is explicitly defined?</u></i> It serves as a highly optimized specialist that liberates real-world image inpainting and AI object removal from parameter bloat.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!--/ Method. -->
+      <!-- <hr> -->
+    </div>
+  </div>
+  </section>
+
+
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Visualizations</h2>
+          <div class="content has-text-justified">
+
+          <h3 class="title is-5 has-text-centered">- Natural Scenes -</h3>
+
+            <!-- Row 1: 4 cols -->
+            <div class="columns fixed-center-columns">
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/removal/erase_test_79_1_1_masked_gt.png" class="original-image" alt="">
+                    <img src="image_assets/removal/erase_test_79_1_1_ours1.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/xiao_v41/20240712_pic_330_masked_gt.png" class="original-image" alt="">
+                    <img src="image_assets/xiao_v41/20240712_pic_330_ours1.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/removal/camera_diff_org_37_1_masked_gt.png" class="original-image" alt="">
+                    <img src="image_assets/removal/camera_diff_org_37_1_ours.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/removal/color_diff36_masked_gt.png" class="original-image" alt="">
+                    <img src="image_assets/removal/color_diff36_ours.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Row 2: 4 cols -->
+            <div class="columns fixed-center-columns">
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/removal/camera_diff_org_065_1_masked_gt.png" class="original-image" alt="">
+                    <img src="image_assets/removal/camera_diff_org_065_1_ours.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/removal/camera_diff_org_064_1_masked_gt.png" class="original-image" alt="">
+                    <img src="image_assets/removal/camera_diff_org_064_1_ours.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/removal/camera_diff_org_075_1_masked_gt.png" class="original-image" alt="">
+                    <img src="image_assets/removal/camera_diff_org_075_1_ours.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/xiao_v41/20240712_pic_538_masked_gt.2.png" class="original-image" alt="">
+                    <img src="image_assets/xiao_v41/20240712_pic_538_ours1.2.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Row 3: 4 cols -->
+            <div class="columns fixed-center-columns">
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container portrait-3-4">
+                    <img src="image_assets/xiao_v41/20240712_pic_843_masked_gt.3-4.png" class="original-image" alt="">
+                    <img src="image_assets/xiao_v41/20240712_pic_843_ours1.3-4.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container portrait-3-4">
+                    <img src="image_assets/xiao_v41/20240712_pic_238_masked_gt.3-4.png" class="original-image" alt="">
+                    <img src="image_assets/xiao_v41/20240712_pic_238_ours1.3-4.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container portrait-3-4">
+                    <img src="image_assets/xiao_v41/20240712_pic_764_masked_gt.3-4.png" class="original-image" alt="">
+                    <img src="image_assets/xiao_v41/20240712_pic_764_ours1.3-4.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Row 4: 4 cols -->
+            <div class="columns fixed-center-columns">
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container portrait-3-4">
+                    <img src="image_assets/xiao_v41/20240712_pic_893_masked_gt.3-4.png" class="original-image" alt="">
+                    <img src="image_assets/xiao_v41/20240712_pic_893_ours1.3-4.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container portrait-3-4">
+                    <img src="image_assets/xiao_v41/20240712_pic_257_masked_gt.3-4.png" class="original-image" alt="">
+                    <img src="image_assets/xiao_v41/20240712_pic_257_ours1.3-4.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container portrait-3-4">
+                    <img src="image_assets/xiao_v41/20240712_pic_101_masked_gt.3-4.png" class="original-image" alt="">
+                    <img src="image_assets/xiao_v41/20240712_pic_101_ours1.3-4.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Row 5: 4 cols -->
+            <div class="columns fixed-center-columns">
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container portrait-3-4">
+                    <img src="image_assets/xiao_v41/20240712_pic_976_masked_gt.3-4.png" class="original-image" alt="">
+                    <img src="image_assets/xiao_v41/20240712_pic_976_ours1.3-4.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container portrait-3-4">
+                    <img src="image_assets/xiao_v41/20240712_pic_1311_masked_gt.3-4.png" class="original-image" alt="">
+                    <img src="image_assets/xiao_v41/20240712_pic_1311_ours1.3-4.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container portrait-3-4">
+                    <img src="image_assets/xiao_v41/20240712_pic_1122_masked_gt.3-4.png" class="original-image" alt="">
+                    <img src="image_assets/xiao_v41/20240712_pic_1122_ours1.3-4.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+            <!-- Row 6: 4 cols -->
+            <div class="columns fixed-center-columns">
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container portrait-3-4">
+                    <img src="image_assets/xiao_v41/20240712_pic_525_masked_gt.3-4.png" class="original-image" alt="">
+                    <img src="image_assets/xiao_v41/20240712_pic_525_ours1.3-4.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container portrait-3-4">
+                    <img src="image_assets/xiao_v41/20240712_pic_596_masked_gt.3-4.png" class="original-image" alt="">
+                    <img src="image_assets/xiao_v41/20240712_pic_596_ours1.3-4.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container portrait-3-4">
+                    <img src="image_assets/xiao_v41/20240712_pic_1189_masked_gt.3-4.png" class="original-image" alt="">
+                    <img src="image_assets/xiao_v41/20240712_pic_1189_ours1.3-4.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- Row 7: 5 cols -->
+            <div class="columns fixed-center-columns">
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container portrait-3-4">
+                    <img src="image_assets/xiao_v41/20240712_pic_1013_masked_gt.3-4.png" class="original-image" alt="">
+                    <img src="image_assets/xiao_v41/20240712_pic_1013_ours1.3-4.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container portrait-3-4">
+                    <img src="image_assets/xiao_v41/20240712_pic_899_masked_gt.3-4.png" class="original-image" alt="">
+                    <img src="image_assets/xiao_v41/20240712_pic_899_ours1.3-4.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container portrait-3-4">
+                    <img src="image_assets/xiao_v41/20240712_pic_952_masked_gt.3-4.png" class="original-image" alt="">
+                    <img src="image_assets/xiao_v41/20240712_pic_952_ours1.3-4.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container portrait-3-4">
+                    <img src="image_assets/xiao_v41/20240712_pic_641_masked_gt.3-4.png" class="original-image" alt="">
+                    <img src="image_assets/xiao_v41/20240712_pic_641_ours1.3-4.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Row 8: 5 cols -->
+            <div class="columns fixed-center-columns">
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container portrait-3-4">
+                    <img src="image_assets/xiao_v41/20240712_pic_945_masked_gt.3-4.png" class="original-image" alt="">
+                    <img src="image_assets/xiao_v41/20240712_pic_945_ours1.3-4.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container portrait-3-4">
+                    <img src="image_assets/xiao_v41/20240712_pic_308_masked_gt.3-4.png" class="original-image" alt="">
+                    <img src="image_assets/xiao_v41/20240712_pic_308_ours1.3-4.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container portrait-3-4">
+                    <img src="image_assets/xiao_v41/20240712_pic_326_masked_gt.3-4.png" class="original-image" alt="">
+                    <img src="image_assets/xiao_v41/20240712_pic_326_ours1.3-4.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container portrait-3-4">
+                    <img src="image_assets/xiao_v41/20240712_pic_545_masked_gt.3-4.2.png" class="original-image" alt="">
+                    <img src="image_assets/xiao_v41/20240712_pic_545_ours1.3-4.2.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Row 9: 5 cols -->
+            <div class="columns fixed-center-columns">
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/removal/camera_diff_org_04_1_masked_gt.png" class="original-image" alt="">
+                    <img src="image_assets/removal/camera_diff_org_04_1_ours.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/removal/camera_diff_org_100_1_masked_gt.png" class="original-image" alt="">
+                    <img src="image_assets/removal/camera_diff_org_100_1_ours.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/removal/camera_diff_org_067_1_masked_gt.png" class="original-image" alt="">
+                    <img src="image_assets/removal/camera_diff_org_067_1_ours.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/removal/camera_diff_org_31_1_masked_gt.png" class="original-image" alt="">
+                    <img src="image_assets/removal/camera_diff_org_31_1_ours.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Row 10: 4 cols (等高不裁切，列宽按宽高比不等分) -->
+            <div class="columns fixed-center-columns equal-height-nocrop">
+              <div class="column has-text-centered" style="flex: 3;">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/xiao_v41/20240712_pic_708_masked_gt.3-4.png" class="original-image" alt="">
+                    <img src="image_assets/xiao_v41/20240712_pic_708_ours1.3-4.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered" style="flex: 4;">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/xiao_v41/20240712_pic_1066_masked_gt.png" class="original-image" alt="">
+                    <img src="image_assets/xiao_v41/20240712_pic_1066_ours1.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered" style="flex: 4;">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/removal/camera_diff_org_058_1_masked_gt.png" class="original-image" alt="">
+                    <img src="image_assets/removal/camera_diff_org_058_1_ours.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered" style="flex: 3;">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/xiao_v41/20240712_pic_57_masked_gt.3-4.png" class="original-image" alt="">
+                    <img src="image_assets/xiao_v41/20240712_pic_57_ours1.3-4.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Row 11: 4 cols -->
+            <div class="columns fixed-center-columns">
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container portrait-3-4">
+                    <img src="image_assets/xiao_v41/20240712_pic_685_masked_gt.3-4.png" class="original-image" alt="">
+                    <img src="image_assets/xiao_v41/20240712_pic_685_ours1.3-4.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container portrait-3-4">
+                    <img src="image_assets/xiao_v41/20240712_pic_703_masked_gt.3-4.png" class="original-image" alt="">
+                    <img src="image_assets/xiao_v41/20240712_pic_703_ours1.3-4.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container portrait-3-4">
+                    <img src="image_assets/xiao_v41/20240712_pic_175_masked_gt.3-4.png" class="original-image" alt="">
+                    <img src="image_assets/xiao_v41/20240712_pic_175_ours1.3-4.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Row 12: 4 cols -->
+            <div class="columns fixed-center-columns">
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container portrait-3-4">
+                    <img src="image_assets/xiao_v41/20240712_pic_1230_masked_gt.3-4.png" class="original-image" alt="">
+                    <img src="image_assets/xiao_v41/20240712_pic_1230_ours1.3-4.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container portrait-3-4">
+                    <img src="image_assets/xiao_v41/20240712_pic_56_masked_gt.3-4.png" class="original-image" alt="">
+                    <img src="image_assets/xiao_v41/20240712_pic_56_ours1.3-4.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container portrait-3-4">
+                    <img src="image_assets/xiao_v41/20240712_pic_317_masked_gt.3-4.png" class="original-image" alt="">
+                    <img src="image_assets/xiao_v41/20240712_pic_317_ours1.3-4.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container portrait-3-4">
+                    <img src="image_assets/xiao_v41/20240712_pic_1017_masked_gt.3-4.png" class="original-image" alt="">
+                    <img src="image_assets/xiao_v41/20240712_pic_1017_ours1.3-4.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          <h3 class="title is-5 has-text-centered">- Portrait Scenes -</h3>
+
+            <!-- Row 1: 4 cols — CelebA-HQ -->
+            <div class="columns fixed-center-columns">
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/ffhq/02909.gt_with_mask.png" class="original-image" alt="">
+                    <img src="image_assets/ffhq/02909.ours.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/celebahq/9874.gt_with_mask.png" class="original-image" alt="">
+                    <img src="image_assets/celebahq/9874.ours.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/ffhq/02913.gt_with_mask.png" class="original-image" alt="">
+                    <img src="image_assets/ffhq/02913.ours.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/celebahq/9002.gt_with_mask.png" class="original-image" alt="">
+                    <img src="image_assets/celebahq/9002.ours.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Row 2: 4 cols — CelebA-HQ -->
+            <div class="columns fixed-center-columns">
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/ffhq/09649_masked_gt.png" class="original-image" alt="">
+                    <img src="image_assets/ffhq/09649_ours.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/ffhq/09726_masked_gt.png" class="original-image" alt="">
+                    <img src="image_assets/ffhq/09726_ours.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/celebahq/27950_masked_gt.png" class="original-image" alt="">
+                    <img src="image_assets/celebahq/27950_ours.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/celebahq/29318_masked_gt.png" class="original-image" alt="">
+                    <img src="image_assets/celebahq/29318_ours.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Row 3: 4 cols — CelebA-HQ + FFHQ -->
+            <div class="columns fixed-center-columns">
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/ffhq/09785_masked_gt.png" class="original-image" alt="">
+                    <img src="image_assets/ffhq/09785_ours.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/celebahq/29065.gt_with_mask.png" class="original-image" alt="">
+                    <img src="image_assets/celebahq/29065.ours.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/ffhq/09124.gt_with_mask.png" class="original-image" alt="">
+                    <img src="image_assets/ffhq/09124.ours.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/celebahq/25694_masked_gt.png" class="original-image" alt="">
+                    <img src="image_assets/celebahq/25694_ours.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Row 4: 5 cols — FFHQ -->
+            <div class="columns fixed-center-columns">
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/ffhq/09107_masked_gt.png" class="original-image" alt="">
+                    <img src="image_assets/ffhq/09107_ours.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/celebahq/27616_masked_gt.png" class="original-image" alt="">
+                    <img src="image_assets/celebahq/27616_ours.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/celebahq/27831_masked_gt.png" class="original-image" alt="">
+                    <img src="image_assets/celebahq/27831_ours.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/celebahq/28259_masked_gt.png" class="original-image" alt="">
+                    <img src="image_assets/celebahq/28259_ours.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/celebahq/28943.gt_with_mask.png" class="original-image" alt="">
+                    <img src="image_assets/celebahq/28943.ours.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
+            <!-- Row 5: 5 cols — FFHQ -->
+            <div class="columns fixed-center-columns">
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/ffhq/09728_masked_gt.png" class="original-image" alt="">
+                    <img src="image_assets/ffhq/09728_ours.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/ffhq/09778.gt_with_mask.png" class="original-image" alt="">
+                    <img src="image_assets/ffhq/09778.ours.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/celebahq/27135_masked_gt.png" class="original-image" alt="">
+                    <img src="image_assets/celebahq/27135_ours.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/ffhq/09794_masked_gt.png" class="original-image" alt="">
+                    <img src="image_assets/ffhq/09794_ours.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/ffhq/09884_masked_gt.png" class="original-image" alt="">
+                    <img src="image_assets/ffhq/09884_ours.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Row 6: 5 cols — FFHQ + CelebA-HQ -->
+            <div class="columns fixed-center-columns">
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/ffhq/09970_masked_gt.png" class="original-image" alt="">
+                    <img src="image_assets/ffhq/09970_ours.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/celebahq/27455_masked_gt.png" class="original-image" alt="">
+                    <img src="image_assets/celebahq/27455_ours.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/ffhq/09379_masked_gt.png" class="original-image" alt="">
+                    <img src="image_assets/ffhq/09379_ours.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/ffhq/09592_masked_gt.png" class="original-image" alt="">
+                    <img src="image_assets/ffhq/09592_ours.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <div class="card">
+                  <div class="image-container">
+                    <img src="image_assets/celebahq/21316.gt_with_mask.png" class="original-image" alt="">
+                    <img src="image_assets/celebahq/21316.ours.png" class="hover-image" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Comparison on Natural Scenes (Places2)</h2>
+          <div class="content has-text-justified">
+            <div class="has-text-centered">
+              <img src="image_assets/tab3.png" style="max-width:900px; width:100%; display:block; margin: 0 auto 15px;">
+              <img src="image_assets/sup_showcase_places_v2.png" style="max-width:900px; width:100%; display:block; margin: 0 auto;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Comparison on Portrait Scenes (CelebA-HQ, FFHQ)</h2>
+          <div class="content has-text-justified">
+            <div class="has-text-centered">
+              <img src="image_assets/tab4.png" style="max-width:450px; width:100%; display:block; margin: 0 auto 15px;">
+              <img src="image_assets/sup_showcase_celebahq_ffhq.png" style="max-width:900px; width:100%; display:block; margin: 0 auto;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- <hr> -->
+  <!-- References -->
+  <!-- <section class="section" id="BibTeX">
+    <div class="container is-max-desktop bibtex-container">
+      <h2 class="title" style="text-align: left; color: #212121;">BibTeX</h2>
+      <pre><code>@misc{Duan2026Moebius,
+      title={Moebius: 0.2B Lightweight Image Inpainting Framework with 10B-Level Performance},
+      author={Kangsheng Duan and Ziyang Xu and Wenyu Liu and Xiaohu Ruan and Xiaoxin Chen and Xinggang Wang},
+      year={2026},
+      eprint={},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={},
+}</code></pre>
+    </div>
+  </section> -->
+
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p style="text-align: center">
+            Thanks to website template <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </footer>
+
+
+  <script defer="" src="./assets/js_nerfies/fontawesome.all.min.js"></script>
+  <script src="./assets/js_nerfies/bulma-carousel.min.js"></script>
+  <script src="./assets/js_nerfies/bulma-slider.min.js"></script>
+  <script src="./assets/js_nerfies/index.js"></script>
+
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
+
+</html>

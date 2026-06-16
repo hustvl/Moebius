@@ -1,0 +1,357 @@
+body {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+
+.footer .icon-link {
+    font-size: 25px;
+    color: #000;
+}
+
+.link-block a {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.dnerf {
+  font-variant: small-caps;
+}
+
+
+.teaser .hero-body {
+  padding-top: 0;
+  padding-bottom: 3rem;
+}
+
+.teaser {
+  font-family: 'Google Sans', sans-serif;
+}
+
+
+.publication-title {
+}
+
+.publication-banner {
+  max-height: parent;
+
+}
+
+.publication-banner video {
+  position: relative;
+  left: auto;
+  top: auto;
+  transform: none;
+  object-fit: fit;
+}
+
+.publication-header .hero-body {
+}
+
+.publication-title {
+    font-family: 'Google Sans', sans-serif;
+}
+
+.publication-authors {
+    font-family: 'Google Sans', sans-serif;
+}
+
+.publication-venue {
+    color: #555;
+    width: fit-content;
+    font-weight: bold;
+}
+
+.publication-awards {
+    color: #ff3860;
+    width: fit-content;
+    font-weight: bolder;
+}
+
+.publication-authors {
+}
+
+.publication-authors a {
+   color: hsl(204, 86%, 53%) !important;
+}
+
+.publication-authors a:hover {
+    text-decoration: underline;
+}
+
+.author-block {
+  display: inline-block;
+}
+
+.publication-banner img {
+}
+
+.publication-authors {
+  /*color: #4286f4;*/
+}
+
+.publication-video {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+
+    overflow: hidden;
+    border-radius: 10px !important;
+}
+
+.publication-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.publication-body img {
+}
+
+.results-carousel {
+  overflow: hidden;
+}
+
+.results-carousel .item {
+  margin: 5px;
+  overflow: hidden;
+  border: 1px solid #bbb;
+  border-radius: 10px;
+  padding: 0;
+  font-size: 0;
+}
+
+.results-carousel video {
+  margin: 0;
+}
+
+
+.interpolation-panel {
+  background: #f5f5f5;
+  border-radius: 10px;
+}
+
+.interpolation-panel .interpolation-image {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.interpolation-video-column {
+}
+
+.interpolation-panel .slider {
+  margin: 0 !important;
+}
+
+.interpolation-panel .slider {
+  margin: 0 !important;
+}
+
+
+/* 每个图片容器的样式 */
+.image-container {
+  position: relative;
+  width: 100%;
+  padding-top: 100%; /* 设置宽高比为 1:1 */
+  cursor: pointer;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* 1:1 长宽比 */
+.image-container.square {
+  padding-top: 100%; /* 1:1 */
+}
+
+/* 4:3 长宽比 */
+.image-container.widescreen-4-3 {
+  padding-top: 75%; /* 4:3 */
+}
+
+/* 16:9 长宽比 */
+.image-container.widescreen-16-9 {
+  padding-top: 56.25%; /* 16:9 */
+}
+
+/* 2:3 长宽比 */
+.image-container.portrait-2-3 {
+  padding-top: 150%; /* 2:3 */
+}
+
+/* 3:4 长宽比 */
+.image-container.portrait-3-4 {
+  padding-top: 133.33%; /* 3:4 */
+}
+
+/* 9:16 长宽比（常见于手机竖屏） */
+.image-container.portrait-9-16 {
+  padding-top: 177.78%; /* 9:16 */
+}
+
+
+/* 图片样式 */
+.image-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  width: 100%; /* 确保图片自适应 */
+  height: auto;
+  max-width: 100%; /* 确保图片不会超出容器 */
+  max-height: 100%; /* 确保图片高度不会超出容器 */
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* 切换图片样式 */
+.image-container .hover-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+/* 鼠标悬停时显示 hover 图片 */
+.image-container:hover .original-image {
+  opacity: 0;
+}
+
+ .image-container:hover .hover-image {
+  opacity: 1;
+}
+
+#.image-container.active .hover-image {
+  opacity: 1;
+}
+
+#.column .card {
+  height: 100%;
+}
+
+.column .card {
+  width: 100%;
+  height: auto;
+  max-width: 100%; /* 确保图片不会超出容器 */
+  max-height: 100%; /* 确保图片高度不会超出容器 */
+}
+
+
+ .fixed-center-columns {
+  width: 700px; /* 固定宽度 */
+  margin: 0 auto; /* 水平居中 */
+}
+
+/* 等高不裁切：列宽按宽高比不等分，原始比例显示，所有图片自然等高 */
+.fixed-center-columns.equal-height-nocrop {
+  align-items: flex-end;
+  gap: 1.5rem;
+  padding: 0 0.75rem;
+}
+.fixed-center-columns.equal-height-nocrop .column {
+  min-width: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+.fixed-center-columns.equal-height-nocrop .image-container {
+  padding-top: 0 !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+.fixed-center-columns.equal-height-nocrop .image-container .original-image {
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: none !important;
+  display: block;
+}
+.fixed-center-columns.equal-height-nocrop .image-container .hover-image {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+}
+
+
+/* 自定义固定高度的 columns 容器 */
+.fixed-height {
+  height: 300px; /* 设置固定高度 */
+  overflow: hidden; /* 防止内容溢出 */
+}
+
+
+/* 自定义固定宽度的 column */
+.column.fixed-width {
+  width: 269px; /* 设置固定宽度 */
+  flex: none; /* 防止 flex 布局自动调整宽度 */
+}
+
+/* Site width control (minimal change) */
+:root {
+  --site-max-width: 700px; /* 默认站点最大宽度（可改） */
+  --site-padding: 1rem;
+}
+
+/* 覆盖 Bulma 的 container 最大宽度，以便通过变量可控站点宽度 */
+.container.is-max-desktop {
+  max-width: var(--site-max-width) !important;
+  padding-left: var(--site-padding);
+  padding-right: var(--site-padding);
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+/* 等高行：所有图片等高，宽度按原始比例自适应 */
+.columns.equal-height {
+  align-items: flex-end;
+  justify-content: center;
+  width: auto !important;
+}
+.columns.equal-height .column {
+  flex: 0 0 auto !important;
+  width: auto !important;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+.columns.equal-height .column .card {
+  width: auto !important;
+  height: auto !important;
+  max-width: none !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+.columns.equal-height .image-container {
+  padding-top: 0 !important;
+  width: auto !important;
+  height: 280px;
+  overflow: visible !important;
+}
+/* original-image 用 relative 撑开容器宽度 */
+.columns.equal-height .image-container .original-image {
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  height: 280px !important;
+  width: auto !important;
+  max-width: none !important;
+  max-height: none !important;
+  display: block;
+}
+/* hover-image 绝对定位叠在上面 */
+.columns.equal-height .image-container .hover-image {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  height: 280px !important;
+  width: auto !important;
+  max-width: none !important;
+  max-height: none !important;
+}
+
+
