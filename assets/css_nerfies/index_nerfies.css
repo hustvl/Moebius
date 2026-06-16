@@ -238,7 +238,7 @@ body {
 
 
  .fixed-center-columns {
-  width: 700px; /* 固定宽度 */
+  width: 100%; /* 跟随父容器文字段落宽度 */
   margin: 0 auto; /* 水平居中 */
 }
 
