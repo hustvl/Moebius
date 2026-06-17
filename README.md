@@ -32,7 +32,7 @@
 >
 > *Under the iron grip of the Scaling Law, AI research has long devolved into a grueling arms race of burning capital, compute, and data. Consequently, the academic community finds it increasingly difficult to keep pace with the ever-expanding model scales driven by the tech industry.*
 >
-> <p align="center"><b>"<u>But is this brute-force scaling truly the only path forward?</u>"</b></p>
+> <p align="center"><b>"<ins>But is this brute-force scaling truly the only path forward?</ins>"</b></p>
 >
 > *Using general-purpose image inpainting as our strategic entry point, we challenge the "scale-at-all-costs" path dependency dictated by the Scaling Law narrative. Through the synergistic optimization of architectural design and knowledge distillation, Moebius achieves a remarkably compact footprint of just **0.22B parameters**. It liberates high-quality image inpainting from the heavy-compute narrative of 10B+ foundation models:*
 > *Across six comprehensive benchmarks spanning both natural and portrait scenes, Moebius performs **on par with**, and in certain scenarios **surpasses**, the inpainting quality of 10B+ industrial state-of-the-art (SOTA) generalist models like *FLUX.1-Fill-Dev*, while delivering a massive **>15× inference acceleration**.*
@@ -62,7 +62,7 @@
     <img src="./assets/tab2.png" width="70%" style="margin-bottom: 10px;"></img>
 </div>
 
-- **🚀 Task-Specific Specialist over Bloated Generalists**: Rather than blindly scaling up, Moebius answers a fundamental question: *<u>Can a model be smarter, lighter, and faster when the task is explicitly defined?</u>* It serves as a highly optimized specialist that liberates real-world image inpainting and AI object removal from parameter bloat.
+- **🚀 Task-Specific Specialist over Bloated Generalists**: Rather than blindly scaling up, Moebius answers a fundamental question: *<ins>Can a model be smarter, lighter, and faster when the task is explicitly defined?</ins>* It serves as a highly optimized specialist that liberates real-world image inpainting and AI object removal from parameter bloat.
 
 ## 🔥 News
 
