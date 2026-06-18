@@ -1,0 +1,9 @@
+data:
+    path: data/train_data.jsonl
+
+    use_rand_mask: True
+    rand_mask_config: config/rand_mask_cfg/random_medium_512.yaml
+
+    use_extra_fg_mask: False
+
+    extra_ann_files_4_PureBackTrain_2_RandMask: null

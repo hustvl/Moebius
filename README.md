@@ -66,6 +66,8 @@
 
 ## 🔥 News
 
+* **`June 18, 2026`:** 🔥🔥 We have released the training and inference code, and open-sourced the [model weights](https://huggingface.co/hustvl/Moebius) on Hugging Face.
+
 * **`June 18, 2026`:** 🎉 Moebius is accepted by ECCV'26! We have released the preprint on arXiv, check it [here](https://arxiv.org/abs/2606.19195) ~ 🍻
 
 * **`June 16, 2026`:** 🔥 We have submitted the GitHub repo for the first time, and there will be more updates soon. Stay tuned! 🤗
@@ -91,6 +93,81 @@
 
 </div>
 
+## ⚖️Evaluation Resources
+
+The masks of the evaluation set are shared in [Google Drive](https://drive.google.com/drive/folders/13J91fdQt2RnHp4j-VzdtSrHRHPA1OxJ5?usp=sharing), and the corresponding images can be downloaded from the following open source platforms:
+* Places2: [Places2](http://places2.csail.mit.edu/download-private.html)
+* CelebA-HQ: [CelebA-HQ](https://openxlab.org.cn/datasets/OpenDataLab/CelebA-HQ)
+* FFHQ: [FFHQ](https://drive.google.com/drive/folders/1tZUcXDBeOibC6jcMCtgRRz67pzrAHeHL?usp=drive_link)
+
+
+
+## 📦Environment Setups
+
+* torch=2.7.1
+* diffusers=0.38.0
+* transformers=4.56.2
+* flash-linear-attention=0.3.2
+* See 'requirements.txt' for detailed Python libraries required
+
+```bash
+conda create -n moebius python=3.14.4
+conda activate moebius
+# cd /xx/xx/Moebius
+pip install -r requirements.txt
+```
+
+## 🗃️Model Checkpoints
+* Download the checkpoint of [VAE](https://huggingface.co/hustvl/PixelHacker/tree/main/vae) and put it into ./weight/vae.
+
+* Download the checkpoints of [pretrained version](https://huggingface.co/hustvl/Moebius/tree/main/pretrained), [fine-tuned version (places2)](https://huggingface.co/hustvl/Moebius/tree/main/ft_places2), [fine-tuned version (celeba-hq)](https://huggingface.co/hustvl/Moebius/tree/main/ft_celebahq), [fine-tuned version (ffhq)](https://huggingface.co/hustvl/Moebius/tree/main/ft_ffhq), and put them into ./weight/Moebius.
+
+* Finally, the detailed organizational form is as follows:
+```bash
+├── weight
+|   ├── Moebius
+|        ├── pretrained
+|            ├── diffusion_pytorch_model.bin
+|        ├── ft_places2
+|            ├── diffusion_pytorch_model.bin
+|        ├── ft_celebahq
+|            ├── diffusion_pytorch_model.bin
+|        ├── ft_ffhq
+|            ├── diffusion_pytorch_model.bin
+|    ├── vae
+|        ├── config.json
+|        ├── diffusion_pytorch_model.bin
+├── ...
+```
+
+<!-- * teacher model and vae: [hustvl/PixelHacker](https://huggingface.co/hustvl/PixelHacker)
+* student model: [hustvl/Moebius](https://huggingface.co/hustvl/Moebius) -->
+
+## 🚂Training
+You can run the following code to start training. The training script supports distributed training, and you can configure the GPU count via environment variables. 
+```bash
+# For single GPU training:
+PY_TRAINER=train_distillation.py bash run/run_ddp_1node.sh config/train_demo.sh
+
+# For multi GPU training:
+NUM_GPUS_PER_MACHINE=4 bash run/run_ddp_1node.sh config/train_demo.sh
+```
+
+## 🔮Inference
+You can run the following code directly to get the inpainting result of the example image-mask pair, and the result will be generated in ./outputs. If you want to infer on custom data, just place the image and mask with the same name in ./dataset.local/imgs and ./dataset.local/masks, respectively, then run the following code as well.
+```bash
+python -m infer.infer_moebius \
+    --model-config config/model_cfg/moebius.yaml \
+    --model-weight weight/Moebius/ft_celebahq/diffusion_pytorch_model.bin \
+    --real-dir data/images \
+    --mask-dir data/masks \
+    --save-dir ./outputs \
+    --cfg 2.0 \
+    --batch-size 8 \
+    --num-workers 8
+```
+
+
 ## 🎓Citation
 
 ```shell
@@ -104,3 +181,6 @@
       url={https://arxiv.org/abs/2606.19195}, 
 }
 ```
+
+## 🧑‍🤝‍🧑Acknowledgement
+We sincerely thank the authors of the following open-source repositories for their contributions to the community, which have greatly facilitated our research and development of Moebius: [Sana](https://github.com/NVlabs/Sana), [flash-linear-attention](https://github.com/fla-org/flash-linear-attention), [lambda-networks](https://github.com/lucidrains/lambda-networks), [timm](https://github.com/huggingface/pytorch-image-models), [Muon](https://github.com/KellerJordan/Muon), [diffusers](https://github.com/huggingface/diffusers).

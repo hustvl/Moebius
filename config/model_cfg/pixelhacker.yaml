@@ -1,0 +1,24 @@
+data:
+  image_size: 512
+
+
+vae:
+  model_name: 'sdvae_f8d4'
+  model_dir: ./weight/vae
+  downsample_ratio: 8
+  embed_dim: 4
+
+
+model:
+  model_type: UNet2DGLAConditionModel
+
+  in_channels: 9 
+  out_channels: 4
+
+  attention_head_dim: 8
+  cross_attention_dim: 768
+
+  encoder_hid_dim: 3072
+  encoder_hid_dim_type: 'text_proj'
+
+  projection_class_embeddings_input_dim: 2560

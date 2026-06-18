@@ -1,0 +1,47 @@
+data:
+  image_size: 512
+
+
+vae:
+  model_name: 'sdvae_f8d4'
+  model_dir: ./weight/vae
+  downsample_ratio: 8
+  embed_dim: 4
+
+
+model:
+  model_type: UNet2DLambdaDWConvMixFFNConditionModel_prune_down_mid_up_block_8x8
+
+  in_channels: 9
+  out_channels: 4
+
+  attention_head_dim: 8
+
+  conv_in_kernel: 3
+  conv_out_kernel: 3
+  cross_attention_dim: 768
+
+  encoder_hid_dim: 3072
+  encoder_hid_dim_type: 'text_proj'
+
+  projection_class_embeddings_input_dim: 2560
+
+  use_lambda_cross_attn: True
+  use_local_self_attn: True
+
+  down_block_types:
+    - DWMixTFDownBlock2D
+    - DWMixTFDownBlock2D
+    - DWMixTFDownBlock2D
+  mid_block_type: null 
+  up_block_types: 
+    - DWMixTFUpBlock2D
+    - DWMixTFUpBlock2D
+    - DWMixTFUpBlock2D
+
+  block_out_channels: 
+    - 320
+    - 640
+    - 1280
+
+  mix_mlp_ratio: 2.5
