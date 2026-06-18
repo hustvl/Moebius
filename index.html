@@ -62,7 +62,7 @@
                   class="external-link button is-rounded is-black"
                   style="text-decoration: none;"
                 >
-                  arXiv
+                  Paper
                 </a>
                 <a
                   href="https://github.com/hustvl/Moebius"
@@ -143,11 +143,11 @@
 
             <ul>
               <li><b>🏆 10B-Level Inpainting Quality (on-par-with/surpass FLUX.1-Fill-Dev across 6 benchmarks)</b>: Size contraction does not mean representation degradation. Through the synergistic optimization of architecture and distillation, Moebius performs on par with, and in certain scenarios (such as complex textures and facial plausibility), surpasses 10B-level state-of-the-art (SOTA) generalist models (<i>FLUX.1-Fill-Dev</i>, <i>SD3.5 Large-Inpainting</i>) across 6 comprehensive benchmarks spanning <b>both natural</b> scenes (<i>Places2</i>) and <b>portrait</b> scenes (<i>CelebA-HQ</i>, <i>FFHQ</i>).</li>
-              <li><b>💡 Synergistic Core Innovations</b>:
+                  <li><b>💡 Synergistic Core Innovations</b>:
                 <ul>
                   <li><b>Architecture Design (LλMI Block)</b>: Reformulates both self- and cross-attention by condensing spatial context and global semantic priors into fixed-size linear matrices, bypassing quadratic computational overhead.</li>
-                  <li><b>Adaptive Multi-Granularity Distillation Strategy</b>: Transfers the representational capacity from our <i>PixelHacker</i> (teacher) strictly within the latent space (avoiding expensive pixel-space decoding). It bridges the giant capacity gap by aligning multi-granularity supervision—ranging from microscopic intermediate features to macroscopic diffusion trajectories—while dynamically balancing training via a gradient norm adaptive loss weighting mechanism.</li>
-                  <li><b>Optimal Synergistic Balancing</b>: Systematically explores the mutual constraint and upper bound between compact structure and distillation. By mapping this architecture-distillation synergy frontier, we ensure our 0.22B <i>Moebius</i> (student) absorbs the maximum semantic reasoning of <i>PixelHacker</i> (teacher) without triggering representation saturation.</li>
+                  <li><b>Adaptive Multi-Granularity Distillation Strategy</b>: Transfers the representational capacity from our <i><a href="https://github.com/hustvl/PixelHacker" style="color: #1d72b8; font-weight: 700; text-decoration: underline; text-underline-offset: 2px;">PixelHacker</a></i> (teacher) strictly within the latent space (avoiding expensive pixel-space decoding). It bridges the giant capacity gap by aligning multi-granularity supervision—ranging from microscopic intermediate features to macroscopic diffusion trajectories—while dynamically balancing training via a gradient norm adaptive loss weighting mechanism.</li>
+                  <li><b>Optimal Synergistic Balancing</b>: Systematically explores the mutual constraint and upper bound between compact structure and distillation. By mapping this architecture-distillation synergy frontier, we ensure our 0.22B <i>Moebius</i> (student) absorbs the maximum semantic reasoning of <i><a href="https://github.com/hustvl/PixelHacker" style="color: #1d72b8; font-weight: 700; text-decoration: underline; text-underline-offset: 2px;">PixelHacker</a></i> (teacher) without triggering representation saturation.</li>
                 </ul>
               </li>
             </ul>
@@ -866,22 +866,20 @@
   </section>
 
 
-  <!-- <hr> -->
-  <!-- References -->
-  <!-- <section class="section" id="BibTeX">
-    <div class="container is-max-desktop bibtex-container">
+  <section class="section" id="BibTeX">
+    <div class="container is-max-widescreen bibtex-container">
       <h2 class="title" style="text-align: left; color: #212121;">BibTeX</h2>
-      <pre><code>@misc{Duan2026Moebius,
+      <pre><code>@misc{DuanAndXu2026Moebius,
       title={Moebius: 0.2B Lightweight Image Inpainting Framework with 10B-Level Performance},
       author={Kangsheng Duan and Ziyang Xu and Wenyu Liu and Xiaohu Ruan and Xiaoxin Chen and Xinggang Wang},
       year={2026},
-      eprint={},
+      eprint={2606.19195},
       archivePrefix={arXiv},
       primaryClass={cs.CV},
-      url={},
+      url={https://arxiv.org/abs/2606.19195},
 }</code></pre>
     </div>
-  </section> -->
+  </section>
 
 
   <footer class="footer">
