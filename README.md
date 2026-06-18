@@ -66,7 +66,7 @@
 
 ## 🔥 News
 
-* **`June 18, 2026`:** 🎉 Moebius is accepted by ECCV 2026! We have released the preprint on arXiv, check it [here](https://arxiv.org/abs/2606.19195) ~ 🍻
+* **`June 18, 2026`:** 🎉 Moebius is accepted by ECCV'26! We have released the preprint on arXiv, check it [here](https://arxiv.org/abs/2606.19195) ~ 🍻
 
 * **`June 16, 2026`:** 🔥 We have submitted the GitHub repo for the first time, and there will be more updates soon. Stay tuned! 🤗
 
