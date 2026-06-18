@@ -93,7 +93,7 @@
 
 </div>
 
-## ⚖️Evaluation Resources
+## ⚖️ Evaluation Resources
 
 The masks of the evaluation set are shared in [Google Drive](https://drive.google.com/drive/folders/13J91fdQt2RnHp4j-VzdtSrHRHPA1OxJ5?usp=sharing), and the corresponding images can be downloaded from the following open source platforms:
 * Places2: [Places2](http://places2.csail.mit.edu/download-private.html)
@@ -102,7 +102,7 @@ The masks of the evaluation set are shared in [Google Drive](https://drive.googl
 
 
 
-## 📦Environment Setups
+## 📦 Environment Setups
 
 * torch=2.7.1
 * diffusers=0.38.0
@@ -117,7 +117,7 @@ conda activate moebius
 pip install -r requirements.txt
 ```
 
-## 🗃️Model Checkpoints
+## 🗃️ Model Checkpoints
 * Download the checkpoint of [VAE](https://huggingface.co/hustvl/PixelHacker/tree/main/vae) and put it into ./weight/vae.
 
 * Download the checkpoints of [pretrained version](https://huggingface.co/hustvl/Moebius/tree/main/pretrained), [fine-tuned version (places2)](https://huggingface.co/hustvl/Moebius/tree/main/ft_places2), [fine-tuned version (celeba-hq)](https://huggingface.co/hustvl/Moebius/tree/main/ft_celebahq), [fine-tuned version (ffhq)](https://huggingface.co/hustvl/Moebius/tree/main/ft_ffhq), and put them into ./weight/Moebius.
@@ -143,7 +143,7 @@ pip install -r requirements.txt
 <!-- * teacher model and vae: [hustvl/PixelHacker](https://huggingface.co/hustvl/PixelHacker)
 * student model: [hustvl/Moebius](https://huggingface.co/hustvl/Moebius) -->
 
-## 🚂Training
+## 🚂 Training
 You can run the following code to start training. The training script supports distributed training, and you can configure the GPU count via environment variables. 
 ```bash
 # For single GPU training:
@@ -153,7 +153,7 @@ PY_TRAINER=train_distillation.py bash run/run_ddp_1node.sh config/train_demo.sh
 NUM_GPUS_PER_MACHINE=4 bash run/run_ddp_1node.sh config/train_demo.sh
 ```
 
-## 🔮Inference
+## 🔮 Inference
 You can run the following code directly to get the inpainting result of the example image-mask pair, and the result will be generated in ./outputs. If you want to infer on custom data, just place the image and mask with the same name in ./dataset.local/imgs and ./dataset.local/masks, respectively, then run the following code as well.
 ```bash
 python -m infer.infer_moebius \
@@ -168,7 +168,7 @@ python -m infer.infer_moebius \
 ```
 
 
-## 🎓Citation
+## 🎓 Citation
 
 ```shell
 @misc{DuanAndXu2026Moebius,
@@ -182,5 +182,5 @@ python -m infer.infer_moebius \
 }
 ```
 
-## 🧑‍🤝‍🧑Acknowledgement
+## 🧑‍🤝‍🧑 Acknowledgement
 We sincerely thank the authors of the following open-source repositories for their contributions to the community, which have greatly facilitated our research and development of Moebius: [Sana](https://github.com/NVlabs/Sana), [flash-linear-attention](https://github.com/fla-org/flash-linear-attention), [lambda-networks](https://github.com/lucidrains/lambda-networks), [timm](https://github.com/huggingface/pytorch-image-models), [Muon](https://github.com/KellerJordan/Muon), [diffusers](https://github.com/huggingface/diffusers).
