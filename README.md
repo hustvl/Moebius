@@ -13,7 +13,7 @@
 
 <sup>1</sup> Huazhong University of Science and Technology. <sup>2</sup> VIVO AI Lab.
 
-[![arxiv](https://img.shields.io/badge/Paper-arXiv-orange)]()  [![license](https://img.shields.io/badge/License-Apache_2.0-blue)](LICENSE)  [![Project](https://img.shields.io/badge/Project-https://hustvl.github.io/Moebius-purple)](https://hustvl.github.io/Moebius)
+[![arxiv](https://img.shields.io/badge/ECCV'26-paper-orange)](https://arxiv.org/abs/2606.19195)  [![license](https://img.shields.io/badge/License-Apache_2.0-blue)](LICENSE)  [![Project](https://img.shields.io/badge/Project_Page-https://hustvl.github.io/Moebius-purple)](https://hustvl.github.io/Moebius)
 
 <br>
 
@@ -66,6 +66,8 @@
 
 ## 🔥 News
 
+* **`June 18, 2026`:** 🎉 Moebius is accepted by ECCV 2026! We have released the preprint on arXiv, check it [here](https://arxiv.org/abs/2606.19195) ~ 🍻
+
 * **`June 16, 2026`:** 🔥 We have submitted the GitHub repo for the first time, and there will be more updates soon. Stay tuned! 🤗
 
 ## 🏕️ Performance on Natural Scene
@@ -89,3 +91,16 @@
 
 </div>
 
+## 🎓Citation
+
+```shell
+@misc{DuanAndXu2026Moebius,
+      title={Moebius: 0.2B Lightweight Image Inpainting Framework with 10B-Level Performance},
+      author={Kangsheng Duan and Ziyang Xu and Wenyu Liu and Xiaohu Ruan and Xiaoxin Chen and Xinggang Wang},
+      year={2026},
+      eprint={2606.19195},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2606.19195}, 
+}
+```
