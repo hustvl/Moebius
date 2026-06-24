@@ -13,7 +13,7 @@
 
 <sup>1</sup> Huazhong University of Science and Technology. <sup>2</sup> VIVO AI Lab.
 
-[![arxiv](https://img.shields.io/badge/ECCV'26-paper-orange)](https://arxiv.org/abs/2606.19195)  [![license](https://img.shields.io/badge/License-Apache_2.0-blue)](LICENSE)  [![Project](https://img.shields.io/badge/Project_Page-https://hustvl.github.io/Moebius-purple)](https://hustvl.github.io/Moebius)  [![HF Daily Rank](https://img.shields.io/badge/Hugging%20Face-No.%201%20Daily%20Ranking-ffbd00)](https://huggingface.co/papers/date/2026-06-19)
+[![arxiv](https://img.shields.io/badge/ECCV'26-paper-orange)](https://arxiv.org/abs/2606.19195)  [![license](https://img.shields.io/badge/License-Apache_2.0-blue)](LICENSE)  [![Project](https://img.shields.io/badge/Project_Page-https://hustvl.github.io/Moebius-purple)](https://hustvl.github.io/Moebius)  [![HF Daily Rank](https://img.shields.io/badge/Hugging%20Face-No.%201%20Daily%20Ranking-ffbd00)](https://huggingface.co/papers/date/2026-06-19)  [![HF Weekly Rank](https://img.shields.io/badge/Hugging%20Face-No.%204%20Weekly%20Ranking-ffbd00)](https://huggingface.co/papers/week/2026-W25)
 
 <br>
 
@@ -65,6 +65,8 @@
 - **🚀 Task-Specific Specialist over Bloated Generalists**: Rather than blindly scaling up, Moebius answers a fundamental question: *<ins>Can a model be smarter, lighter, and faster when the task is explicitly defined?</ins>* It serves as a highly optimized specialist that liberates real-world image inpainting and AI object removal from parameter bloat.
 
 ## 🔥 News
+* **`June 25, 2026`:** 🎉 We are excited to share that Moebius has achieved the [No. 4 weekly ranking](https://huggingface.co/papers/week/2026-W25) (4/105) on Hugging Face. Thank you all for your support!
+
 * **`June 19, 2026`:** 🎉 Moebius has achieved the [No. 1 daily ranking](https://huggingface.co/papers/date/2026-06-19) on Hugging Face!
 
 * **`June 18, 2026`:** 🔥🔥 We have released the training and inference code, and open-sourced the [model weights](https://huggingface.co/hustvl/Moebius) on Hugging Face.
