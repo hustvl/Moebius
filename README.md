@@ -114,7 +114,7 @@ The masks of the evaluation set are shared in [Google Drive](https://drive.googl
 * See 'requirements.txt' for detailed Python libraries required
 
 ```bash
-conda create -n moebius python=3.14.4
+conda create -n moebius python=3.12
 conda activate moebius
 # cd /xx/xx/Moebius
 pip install -r requirements.txt
