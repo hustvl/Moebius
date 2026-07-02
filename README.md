@@ -174,14 +174,11 @@ python -m infer.infer_moebius \
 ## 🎓 Citation
 
 ```shell
-@misc{DuanAndXu2026Moebius,
+@inproceedings{DuanAndXu2026Moebius,
       title={Moebius: 0.2B Lightweight Image Inpainting Framework with 10B-Level Performance},
       author={Kangsheng Duan and Ziyang Xu and Wenyu Liu and Xiaohu Ruan and Xiaoxin Chen and Xinggang Wang},
       year={2026},
-      eprint={2606.19195},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2606.19195}, 
+      booktitle={European Conference on Computer Vision (ECCV)}
 }
 ```
 
