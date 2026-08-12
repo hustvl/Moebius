@@ -182,5 +182,8 @@ python -m infer.infer_moebius \
 }
 ```
 
+## 📄 License
+Both the code and the pretrained model weights of Moebius are released under the [Apache License 2.0](LICENSE), the same license used by the [Qwen](https://github.com/QwenLM/Qwen3) model family. Commercial use of the weights and the images produced with them is permitted.
+
 ## 🧑‍🤝‍🧑 Acknowledgement
 We sincerely thank the authors of the following open-source repositories for their contributions to the community, which have greatly facilitated our research and development of Moebius: [Sana](https://github.com/NVlabs/Sana), [flash-linear-attention](https://github.com/fla-org/flash-linear-attention), [lambda-networks](https://github.com/lucidrains/lambda-networks), [timm](https://github.com/huggingface/pytorch-image-models), [Muon](https://github.com/KellerJordan/Muon), [diffusers](https://github.com/huggingface/diffusers).
