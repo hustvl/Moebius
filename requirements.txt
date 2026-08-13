@@ -1,5 +1,6 @@
-torch==2.7.1+cu130
-torchvision
+--extra-index-url https://download.pytorch.org/whl/cu128
+torch==2.7.1+cu128
+torchvision==0.22.1+cu128
 diffusers==0.38.0
 transformers
 accelerate==1.14.0
